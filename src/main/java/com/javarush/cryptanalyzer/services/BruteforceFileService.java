@@ -1,15 +1,11 @@
 package com.javarush.cryptanalyzer.services;
 
 
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.HashMap;
 
 import static com.javarush.cryptanalyzer.util.CryptoAnalyzerTool.bruteforce;
-import static com.javarush.cryptanalyzer.util.CryptoAnalyzerTool.decrypt;
 
 
 public class BruteforceFileService {

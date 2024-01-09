@@ -1,7 +1,6 @@
 package com.javarush.cryptanalyzer.controller;
 
 import com.javarush.cryptanalyzer.services.DecryptFileService;
-import com.javarush.cryptanalyzer.services.EncryptFileService;
 import com.javarush.cryptanalyzer.util.Validator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,7 +39,7 @@ public class DecryptSceneController {
     protected Button startEncryptBtn;
 
     @FXML
-    protected Label statusEncrypt;
+    protected Label statusDecrypt;
 
     @FXML
     protected Label validateKeyLabel;
@@ -53,10 +52,11 @@ public class DecryptSceneController {
 
     @FXML
     protected void onDecryptFileBtnClick() {
-        if(!validateField()) return;
+        if (!validateField()) return;
 
         DecryptFileService decryptFileService = new DecryptFileService(inputFile, outputDirectory, key);
         decryptFileService.decryptFile();
+        statusDecrypt.setText("Готово!");
     }
 
 
@@ -65,7 +65,7 @@ public class DecryptSceneController {
         keyField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 keyField.setText(newValue.replaceAll("\\D", ""));
-            }else if(!newValue.isEmpty()) {
+            } else if (!newValue.isEmpty()) {
                 key = Integer.parseInt(keyField.getText());
             }
         });
@@ -84,6 +84,7 @@ public class DecryptSceneController {
             validateLabelFileInput.setVisible(true);
             validateLabelFileInput.setText("Файл не выбран!");
         }
+        statusDecrypt.setText("Ожидание");
     }
 
 
@@ -99,7 +100,7 @@ public class DecryptSceneController {
             validateLabelDirectoryOutput.setVisible(true);
             validateLabelDirectoryOutput.setText("Директория  не выбран!");
         }
-
+        statusDecrypt.setText("Ожидание");
     }
 
     @FXML
@@ -108,24 +109,24 @@ public class DecryptSceneController {
     }
 
 
-    private boolean validateField(){
+    private boolean validateField() {
         boolean isValid = true;
-        if (!Validator.isFileNotEmptyOrExist(inputFile)) {
+        if (Validator.isFileNotEmptyOrExist(inputFile)) {
             validateLabelFileInput.setVisible(true);
             validateLabelFileInput.setText("Файл не выбран или некорректен");
             isValid = false;
         }
-        if (!Validator.isFileNotEmptyOrExist(outputDirectory)) {
+        if (Validator.isFileNotEmptyOrExist(outputDirectory)) {
             validateLabelDirectoryOutput.setVisible(true);
             validateLabelDirectoryOutput.setText("Директория не выбрана или некорректна");
             isValid = false;
         }
-        if(keyField.getText().isEmpty()){
+        if (keyField.getText().isEmpty()) {
             validateKeyLabel.setVisible(true);
             validateKeyLabel.setText("Ключ не введен");
             isValid = false;
         }
-        return  isValid;
+        return isValid;
     }
 
 

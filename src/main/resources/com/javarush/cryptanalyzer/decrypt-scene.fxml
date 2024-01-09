@@ -46,15 +46,15 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #1d1e22;" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="btnSelectFileOutput" layoutX="191.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSelectDirectoryOutputBtnClick" text="Выбрать" />
+            <Button fx:id="btnSelectFileOutput" layoutX="191.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSelectDirectoryOutputBtnClick" style="-fx-background-color: #feda6a;" text="Выбрать" />
             <TextField fx:id="fileFiledInput" editable="false" layoutX="35.0" layoutY="132.0" />
             <TextField fx:id="keyField" layoutX="35.0" layoutY="200.0" />
             <Label layoutX="66.0" layoutY="103.0" text="Исходный файл" textFill="WHITE" />
             <Label layoutX="66.0" layoutY="172.0" text="Ключ(Сдвиг)" textFill="WHITE" />
             <Label fx:id="validateLabelFileInput" layoutX="260.0" layoutY="136.0" prefHeight="17.0" prefWidth="290.0" text="Danger" textFill="#e40000" visible="false" />
             <Label fx:id="validateKeyLabel" layoutX="200.0" layoutY="204.0" prefHeight="17.0" prefWidth="204.0" text="Danger" textFill="#e40000" visible="false" />
-            <Button fx:id="startEncryptBtn" layoutX="340.0" layoutY="351.0" mnemonicParsing="false" onAction="#onDecryptFileBtnClick" prefHeight="25.0" prefWidth="121.0" text="Начать" />
-            <Label fx:id="statusEncrypt" alignment="CENTER" layoutX="357.0" layoutY="413.0" prefHeight="17.0" prefWidth="87.0" text="Ожидание" textFill="WHITE" />
+            <Button fx:id="startEncryptBtn" layoutX="340.0" layoutY="351.0" mnemonicParsing="false" onAction="#onDecryptFileBtnClick" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #feda6a;" text="Начать" />
+            <Label fx:id="statusDecrypt" alignment="CENTER" layoutX="357.0" layoutY="413.0" prefHeight="17.0" prefWidth="87.0" text="Ожидание" textFill="WHITE" />
             <AnchorPane layoutX="-1.0" layoutY="1.0" prefHeight="85.0" prefWidth="800.0" style="-fx-background-color: #393f4d;">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="229.0" layoutY="20.0" prefHeight="17.0" prefWidth="342.0" text="Расшифровать" textAlignment="CENTER" textOverrun="CLIP">
@@ -80,11 +80,11 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnSelectFileInput" layoutX="191.0" layoutY="132.0" mnemonicParsing="false" onAction="#onSelectFileInputBtnClick" text="Выбрать" />
+            <Button fx:id="btnSelectFileInput" layoutX="191.0" layoutY="132.0" mnemonicParsing="false" onAction="#onSelectFileInputBtnClick" style="-fx-background-color: #feda6a;" text="Выбрать" />
             <TextField fx:id="directoryFiledOutput" editable="false" layoutX="35.0" layoutY="268.0" />
             <Label layoutX="66.0" layoutY="236.0" text="Сохранить в" textFill="WHITE" />
             <Label fx:id="validateLabelDirectoryOutput" layoutX="260.0" layoutY="269.0" prefHeight="17.0" prefWidth="298.0" text="Danger" textFill="#e40000" visible="false" />
-            <Button fx:id="backToMainBtn" layoutX="672.0" layoutY="99.0" mnemonicParsing="false" onAction="#onBackToMainBtnClick" text="Назад к меню" />
+            <Button fx:id="backToMainBtn" layoutX="672.0" layoutY="99.0" mnemonicParsing="false" onAction="#onBackToMainBtnClick" style="-fx-background-color: #feda6a;" text="Назад к меню" />
          </children>
     </AnchorPane>
   </children>
