@@ -34,10 +34,10 @@ public class BruteforceSceneController {
     private Button btnSelectFileOutput;
 
     @FXML
-    private TextField directoryFiledOutput;
+    private TextField directoryFieldOutput;
 
     @FXML
-    private TextField fileFiledInput;
+    private TextField fileFieldInput;
 
     @FXML
     private TextField keyFieldEnd;
@@ -101,12 +101,12 @@ public class BruteforceSceneController {
 
     @FXML
     protected void onSelectFileInputBtnClick() {
-        fileFiledInput.setText("");
+        fileFieldInput.setText("");
         validateLabelFileInput.setVisible(false);
         FileChooser fileChooser = new FileChooser();
         try {
             inputFile = fileChooser.showOpenDialog(btnSelectFileInput.getScene().getWindow());
-            fileFiledInput.setText(inputFile.getName());
+            fileFieldInput.setText(inputFile.getName());
         } catch (RuntimeException ex) {
             validateLabelFileInput.setVisible(true);
             validateLabelFileInput.setText("Файл не выбран!");
@@ -116,12 +116,12 @@ public class BruteforceSceneController {
 
     @FXML
     protected void onSelectDirectoryOutputBtnClick() {
-        directoryFiledOutput.setText("");
+        directoryFieldOutput.setText("");
         validateLabelDirectoryOutput.setVisible(false);
         DirectoryChooser directoryChooser = new DirectoryChooser();
         try {
             outputDirectory = directoryChooser.showDialog(btnSelectFileOutput.getScene().getWindow());
-            directoryFiledOutput.setText(outputDirectory.getName());
+            directoryFieldOutput.setText(outputDirectory.getName());
         } catch (RuntimeException ex) {
             validateLabelDirectoryOutput.setVisible(true);
             validateLabelDirectoryOutput.setText("Директория  не выбран!");

@@ -49,7 +49,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="517.0" prefWidth="830.0" style="-fx-background-color: #1d1e22;" VBox.vgrow="ALWAYS">
          <children>
             <Button fx:id="btnSelectFileOutput" layoutX="191.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSelectDirectoryOutputBtnClick" style="-fx-background-color: #feda6a;" text="Выбрать" />
-            <TextField fx:id="fileFiledInput" editable="false" layoutX="35.0" layoutY="132.0" />
+            <TextField fx:id="fileFieldInput" editable="false" layoutX="35.0" layoutY="132.0" />
             <TextField fx:id="keyFieldStart" layoutX="23.0" layoutY="200.0" prefHeight="25.0" prefWidth="87.0" />
             <Label layoutX="66.0" layoutY="103.0" text="Исходный файл" textFill="WHITE" />
             <Label layoutX="43.0" layoutY="172.0" text="Диапозон ключей(Сдвиг)" textFill="WHITE" />
@@ -83,7 +83,7 @@
                </children>
             </AnchorPane>
             <Button fx:id="btnSelectFileInput" layoutX="191.0" layoutY="132.0" mnemonicParsing="false" onAction="#onSelectFileInputBtnClick" style="-fx-background-color: #feda6a;" text="Выбрать" />
-            <TextField fx:id="directoryFiledOutput" editable="false" layoutX="35.0" layoutY="268.0" />
+            <TextField fx:id="directoryFieldOutput" editable="false" layoutX="35.0" layoutY="268.0" />
             <Label layoutX="66.0" layoutY="236.0" text="Сохранить в" textFill="WHITE" />
             <Label fx:id="validateLabelDirectoryOutput" layoutX="260.0" layoutY="269.0" prefHeight="17.0" prefWidth="298.0" text="Danger" textFill="#e40000" visible="false" />
             <Button fx:id="backToMainBtn" layoutX="20.0" layoutY="409.0" mnemonicParsing="false" onAction="#onBackToMainBtnClick" style="-fx-background-color: #feda6a;" text="Назад к меню" />
