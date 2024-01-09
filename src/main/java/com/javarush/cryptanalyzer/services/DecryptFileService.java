@@ -1,14 +1,16 @@
 package com.javarush.cryptanalyzer.services;
 
+import com.javarush.cryptanalyzer.util.CryptoAnalyzerTool;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 
-import static com.javarush.cryptanalyzer.util.CryptoAnalyzerTool.decrypt;
+
 
 
 public class DecryptFileService {
+    private  final CryptoAnalyzerTool cryptoAnalyzerTool = new CryptoAnalyzerTool();
     private final File outputFile;
     private final File inputFile;
     private final int key;
@@ -31,7 +33,7 @@ public class DecryptFileService {
              BufferedWriter writer = Files.newBufferedWriter(Files.createFile(path))) {
             char[] buffer = new char[(int) Files.size(Path.of(inputFile.getAbsolutePath()))];
             reader.read(buffer);
-            buffer = decrypt(buffer, key);
+            buffer = cryptoAnalyzerTool.decrypt(buffer, key);
             writer.write(buffer);
 
         } catch (IOException ex) {

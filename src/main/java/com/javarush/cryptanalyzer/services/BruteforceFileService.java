@@ -1,14 +1,16 @@
 package com.javarush.cryptanalyzer.services;
 
 
+import com.javarush.cryptanalyzer.util.CryptoAnalyzerTool;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static com.javarush.cryptanalyzer.util.CryptoAnalyzerTool.bruteforce;
 
 
 public class BruteforceFileService {
+    private  final CryptoAnalyzerTool cryptoAnalyzerTool = new CryptoAnalyzerTool();
     private final File outputFile;
     private final File inputFile;
 
@@ -45,7 +47,7 @@ public class BruteforceFileService {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        return bruteforce(buffer,keyStart,keyEnd);
+        return cryptoAnalyzerTool.bruteforce(buffer,keyStart,keyEnd);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.javarush.cryptanalyzer.controller;
 
 import com.javarush.cryptanalyzer.services.BruteforceFileService;
-import com.javarush.cryptanalyzer.util.Validator;
+import com.javarush.cryptanalyzer.util.CryptoAnalyzerTool;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -137,12 +137,12 @@ public class BruteforceSceneController {
 
     private boolean validateField() {
         boolean isValid = true;
-        if (Validator.isFileNotEmptyOrExist(inputFile)) {
+        if (isFileNotEmptyOrExist(inputFile)) {
             validateLabelFileInput.setVisible(true);
             validateLabelFileInput.setText("Файл не выбран или некорректен");
             isValid = false;
         }
-        if (Validator.isFileNotEmptyOrExist(outputDirectory)) {
+        if (isFileNotEmptyOrExist(outputDirectory)) {
             validateLabelDirectoryOutput.setVisible(true);
             validateLabelDirectoryOutput.setText("Директория не выбрана или некорректна");
             isValid = false;
@@ -154,6 +154,8 @@ public class BruteforceSceneController {
         }
         return isValid;
     }
-
+    private  boolean isFileNotEmptyOrExist(File file){
+        return file == null || !file.exists();
+    }
 
 }

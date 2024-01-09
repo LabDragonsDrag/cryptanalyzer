@@ -4,7 +4,7 @@ public class CryptoAnalyzerTool {
 
 
 
-    public static char[] encrypt(char[] characters, int key) {
+    public  char[] encrypt(char[] characters, int key) {
         characters = String.valueOf(characters).toCharArray();
         int alphabet = alphabetSize(characters);
         for (int i = 0; i < characters.length; ++i) {
@@ -19,11 +19,11 @@ public class CryptoAnalyzerTool {
     }
 
 
-    public static char[] decrypt(char[] characters, int key) {
+    public  char[] decrypt(char[] characters, int key) {
         return encrypt(characters, alphabetSize(characters) - key);
     }
 
-    private static int alphabetSize(char[] characters) {
+    private  int alphabetSize(char[] characters) {
         for (char oneChar : characters) {
             if (Character.UnicodeBlock.of(oneChar).equals(Character.UnicodeBlock.CYRILLIC))
                 return 32;
@@ -31,7 +31,7 @@ public class CryptoAnalyzerTool {
         return 26;
     }
 
-    public static String[] bruteforce(char[] character, int keyStart, int keyEnd) {
+    public  String[] bruteforce(char[] character, int keyStart, int keyEnd) {
         String[] decryptedLines = new String[keyEnd - keyStart + 1];
         int i = 0;
         for (int keyVariant = keyStart; keyVariant <= keyEnd; ++keyVariant) {

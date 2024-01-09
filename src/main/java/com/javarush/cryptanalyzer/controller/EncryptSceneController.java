@@ -1,7 +1,7 @@
 package com.javarush.cryptanalyzer.controller;
 
 import com.javarush.cryptanalyzer.services.EncryptFileService;
-import com.javarush.cryptanalyzer.util.Validator;
+import com.javarush.cryptanalyzer.util.CryptoAnalyzerTool;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -114,12 +114,12 @@ public class EncryptSceneController {
 
     private boolean validateField() {
         boolean isValid = true;
-        if (Validator.isFileNotEmptyOrExist(inputFile)) {
+        if (isFileNotEmptyOrExist(inputFile)) {
             validateLabelFileInput.setVisible(true);
             validateLabelFileInput.setText("Файл не выбран или некорректен");
             isValid = false;
         }
-        if (Validator.isFileNotEmptyOrExist(outputDirectory)) {
+        if (isFileNotEmptyOrExist(outputDirectory)) {
             validateLabelDirectoryOutput.setVisible(true);
             validateLabelDirectoryOutput.setText("Директория не выбрана или некорректна");
             isValid = false;
@@ -132,5 +132,7 @@ public class EncryptSceneController {
         return isValid;
     }
 
-
+    private  boolean isFileNotEmptyOrExist(File file){
+        return file == null || !file.exists();
+    }
 }
