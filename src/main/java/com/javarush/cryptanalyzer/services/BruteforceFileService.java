@@ -30,7 +30,7 @@ public class BruteforceFileService {
         }catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        try (Writer writer = new FileWriter(Files.createFile(path).toFile())) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Files.createFile(path))) {
             writer.write(decryptLine);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
@@ -39,7 +39,7 @@ public class BruteforceFileService {
 
     public String[] bruteForce(){
         char[] buffer;
-        try (Reader reader = new FileReader(inputFile)) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             buffer = new char[(int) Files.size(Path.of(inputFile.getAbsolutePath()))];
             reader.read(buffer);
         } catch (IOException ex) {

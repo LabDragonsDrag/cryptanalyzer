@@ -27,12 +27,13 @@ public class DecryptFileService {
         }catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        try (Reader reader = new FileReader(inputFile);
-             Writer writer = new FileWriter(Files.createFile(path).toFile())) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             BufferedWriter writer = Files.newBufferedWriter(Files.createFile(path))) {
             char[] buffer = new char[(int) Files.size(Path.of(inputFile.getAbsolutePath()))];
             reader.read(buffer);
-            writer.write(decrypt(buffer, key));
-            System.out.println(Arrays.toString(buffer));
+            buffer = decrypt(buffer, key);
+            writer.write(buffer);
+
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
