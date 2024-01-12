@@ -1,7 +1,7 @@
-package com.javarush.cryptanalyzer.controller;
+package com.javarush.cryptanalyzer.novikov.controller;
 
-import com.javarush.cryptanalyzer.services.EncryptFileService;
-import com.javarush.cryptanalyzer.util.CryptoAnalyzerTool;
+import com.javarush.cryptanalyzer.novikov.util.SceneManager;
+import com.javarush.cryptanalyzer.novikov.services.EncryptFileService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,8 +10,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-
-import static com.javarush.cryptanalyzer.util.SceneManager.sceneChanger;
 
 public class EncryptSceneController {
 
@@ -108,7 +106,7 @@ public class EncryptSceneController {
 
     @FXML
     protected void onBackToMainBtnClick() {
-        sceneChanger("main-scene.fxml", backToMainBtn);
+        SceneManager.sceneChanger("main-scene.fxml", backToMainBtn);
     }
 
 

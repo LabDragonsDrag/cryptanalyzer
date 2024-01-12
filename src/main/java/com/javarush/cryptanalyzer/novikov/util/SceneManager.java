@@ -1,6 +1,6 @@
-package com.javarush.cryptanalyzer.util;
+package com.javarush.cryptanalyzer.novikov.util;
 
-import com.javarush.cryptanalyzer.Main;
+import com.javarush.cryptanalyzer.novikov.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;

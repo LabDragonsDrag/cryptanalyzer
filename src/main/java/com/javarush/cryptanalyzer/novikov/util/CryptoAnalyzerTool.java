@@ -1,4 +1,4 @@
-package com.javarush.cryptanalyzer.util;
+package com.javarush.cryptanalyzer.novikov.util;
 
 public class CryptoAnalyzerTool {
 

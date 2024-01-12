@@ -1,7 +1,7 @@
-package com.javarush.cryptanalyzer.services;
+package com.javarush.cryptanalyzer.novikov.services;
 
 
-import com.javarush.cryptanalyzer.util.CryptoAnalyzerTool;
+import com.javarush.cryptanalyzer.novikov.util.CryptoAnalyzerTool;
 
 import java.io.*;
 import java.nio.file.Files;

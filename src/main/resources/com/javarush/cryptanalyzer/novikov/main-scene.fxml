@@ -42,7 +42,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javarush.cryptanalyzer.controller.MainSceneController">
+<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javarush.cryptanalyzer.novikov.controller.MainSceneController">
      <AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="81.0" prefWidth="800.0" style="-fx-background-color: #393f4d;">
          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="18.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="263.0" text="Критоанализатор" textAlignment="JUSTIFY" textOverrun="LEADING_ELLIPSIS" wrapText="true">
              <font>

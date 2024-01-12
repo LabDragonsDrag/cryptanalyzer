@@ -3,8 +3,8 @@ module com.javarush.cryptanalyzer {
     requires javafx.fxml;
 
 
-    opens com.javarush.cryptanalyzer to javafx.fxml;
-    exports com.javarush.cryptanalyzer;
-    exports com.javarush.cryptanalyzer.controller;
-    opens com.javarush.cryptanalyzer.controller to javafx.fxml;
+    opens com.javarush.cryptanalyzer.novikov to javafx.fxml;
+    exports com.javarush.cryptanalyzer.novikov;
+    exports com.javarush.cryptanalyzer.novikov.controller;
+    opens com.javarush.cryptanalyzer.novikov.controller to javafx.fxml;
 }

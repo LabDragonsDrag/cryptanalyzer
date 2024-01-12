@@ -1,101 +1,75 @@
-package com.javarush.cryptanalyzer.controller;
+package com.javarush.cryptanalyzer.novikov.controller;
 
-import com.javarush.cryptanalyzer.services.BruteforceFileService;
-import com.javarush.cryptanalyzer.util.CryptoAnalyzerTool;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.javarush.cryptanalyzer.novikov.services.DecryptFileService;
+import com.javarush.cryptanalyzer.novikov.util.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 
-import static com.javarush.cryptanalyzer.util.SceneManager.sceneChanger;
-
-public class BruteforceSceneController {
+public class DecryptSceneController {
 
 
     private File inputFile;
     private File outputDirectory;
-    private int keyStart;
-    private int keyEnd;
-    private BruteforceFileService bruteforceFileService;
+    private int key;
+
     @FXML
     private Button backToMainBtn;
 
     @FXML
-    private Button btnSelectFileInput;
+    protected Button btnSelectFileOutput;
 
     @FXML
-    private Button btnSelectFileOutput;
+    protected Button btnSelectFileInput;
 
     @FXML
-    private TextField directoryFieldOutput;
+    protected TextField fileFieldInput;
 
     @FXML
-    private TextField fileFieldInput;
+    protected TextField directoryFieldOutput;
 
     @FXML
-    private TextField keyFieldEnd;
+    protected TextField keyField;
 
     @FXML
-    private TextField keyFieldStart;
+    protected Button startEncryptBtn;
 
     @FXML
-    private ListView<String> bruteList;
+    protected Label statusDecrypt;
 
     @FXML
-    private Label validateKeyLabel;
+    protected Label validateKeyLabel;
 
     @FXML
-    private Label validateLabelDirectoryOutput;
+    protected Label validateLabelFileInput;
 
     @FXML
-    private Label validateLabelFileInput;
+    protected Label validateLabelDirectoryOutput;
 
     @FXML
-    private Label statusBruteforce;
+    protected void onDecryptFileBtnClick() {
+        if (!validateField()) return;
+
+        DecryptFileService decryptFileService = new DecryptFileService(inputFile, outputDirectory, key);
+        decryptFileService.decryptFile();
+        statusDecrypt.setText("Готово!");
+    }
 
 
     @FXML
     public void initialize() {
-        keyFieldStart.textProperty().addListener((observable, oldValue, newValue) -> {
+        keyField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                keyFieldStart.setText(newValue.replaceAll("\\D", ""));
+                keyField.setText(newValue.replaceAll("\\D", ""));
             } else if (!newValue.isEmpty()) {
-                keyStart = Integer.parseInt(keyFieldStart.getText());
+                key = Integer.parseInt(keyField.getText());
             }
         });
-        keyFieldEnd.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                keyFieldEnd.setText(newValue.replaceAll("\\D", ""));
-            } else if (!newValue.isEmpty()) {
-                keyEnd = Integer.parseInt(keyFieldEnd.getText());
-            }
-        });
-        bruteList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->{
-                bruteforceFileService.decryptFile(newValue);
-                statusBruteforce.setText("Готово!");
-        });
-    }
-
-    @FXML
-    protected void onBruteforceFileBtnClick() {
-        if (!validateField()) return;
-        bruteforceFileService = new BruteforceFileService(inputFile, outputDirectory, keyStart, keyEnd);
-        fillBruteListResult(bruteforceFileService.bruteForce());
-        statusBruteforce.setText("Ожидание");
-
-    }
-
-    private void fillBruteListResult(String[] results) {
-        bruteList.getItems().clear();
-        ObservableList<String> listResult = FXCollections.observableArrayList(results);
-        bruteList.setItems(listResult);
     }
 
 
@@ -111,6 +85,7 @@ public class BruteforceSceneController {
             validateLabelFileInput.setVisible(true);
             validateLabelFileInput.setText("Файл не выбран!");
         }
+        statusDecrypt.setText("Ожидание");
     }
 
 
@@ -126,12 +101,12 @@ public class BruteforceSceneController {
             validateLabelDirectoryOutput.setVisible(true);
             validateLabelDirectoryOutput.setText("Директория  не выбран!");
         }
-
+        statusDecrypt.setText("Ожидание");
     }
 
     @FXML
     protected void onBackToMainBtnClick() {
-        sceneChanger("main-scene.fxml", backToMainBtn);
+        SceneManager.sceneChanger("main-scene.fxml", backToMainBtn);
     }
 
 
@@ -147,15 +122,16 @@ public class BruteforceSceneController {
             validateLabelDirectoryOutput.setText("Директория не выбрана или некорректна");
             isValid = false;
         }
-        if (keyFieldStart.getText().isEmpty() || keyFieldEnd.getText().isEmpty()) {
+        if (keyField.getText().isEmpty()) {
             validateKeyLabel.setVisible(true);
             validateKeyLabel.setText("Ключ не введен");
             isValid = false;
         }
         return isValid;
     }
+
     private  boolean isFileNotEmptyOrExist(File file){
         return file == null || !file.exists();
     }
-
 }
+

@@ -1,4 +1,4 @@
-package com.javarush.cryptanalyzer;
+package com.javarush.cryptanalyzer.novikov;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
